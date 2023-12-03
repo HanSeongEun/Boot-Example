@@ -9,6 +9,10 @@ import com.example.dto.Dept;
 @Mapper
 public interface DeptDao {
 	
+	List<Dept> depts(); 
+	
+	int deleteDept(int deptno);
+	
 	int updateDept(Dept dept);
 	
 	List<Dept> searchDept(String search);

@@ -8,11 +8,18 @@
 	<insert id="addDept" parameterType="com.example.dto.Dept"> 
 		insert into dept values (#{deptno}, #{dname}, #{loc} )
 	</insert>
+
 	<update id="updateDept" parameterType="com.example.dto.Dept">
 		update dept 
 		set dname=#{dname}, loc=#{loc}
 		where deptno = #{deptno}
 	</update>
+	
+	
+	<delete id="deleteDept" parameterType="int">
+		delete from dept where deptno =#{deptno}
+	</delete>
+	
 	<select id="deptAll" resultType="com.example.dto.Dept">
 		select * from dept order by deptno
 	</select>
@@ -27,4 +34,9 @@
 	<select id="deptOne" parameterType="int" resultType="com.example.dto.Dept">
 		 select * from dept where deptno= #{deptno}
 	</select>
+	
+	<select id = "depts" resultType="com.example.dto.Dept">
+		select deptno, dname from dept
+	</select>
+	
 </mapper> 

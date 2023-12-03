@@ -18,8 +18,23 @@ import com.example.service.DeptService;
 @Controller
 public class DeptController {
 	
-	@Autowired
+	@Autowired 
 	DeptService dservice;
+	
+	@GetMapping("/emp/depts")
+	public String depts(Model m) {		
+		List<Dept> dlist = dservice.depts();
+		m.addAttribute("dlist", dlist);
+		return "emp/emp";
+	}
+	 
+	
+	@GetMapping("/dept/delete/{deptno}")
+	public String delete(@PathVariable int deptno) {
+		dservice.deleteDept(deptno);
+		return "redirect:/"; 
+		
+	}
 	
 	@GetMapping("/dept/update/{deptno}")
 	public String updateForm(@PathVariable int deptno, Model m) {
@@ -28,11 +43,12 @@ public class DeptController {
 		m.addAttribute("dept", dept);
 		return "dept/update";
 	}
+	
 	@PutMapping("/dept/update")
 	 public String update(Dept dept) {
 		dservice.updateDept(dept);
 		return "redirect:/";
-		
+		   
 	}
 	
 	
@@ -44,8 +60,8 @@ public class DeptController {
 		List<Dept> dlist = dservice.searchDept(search);
 		m.addAttribute("dlist", dlist);
 		m.addAttribute("search", search);
-				
-	}
+				   
+	} 
 	
 	@GetMapping("/dept/insert")
 	public void form(Model m) {

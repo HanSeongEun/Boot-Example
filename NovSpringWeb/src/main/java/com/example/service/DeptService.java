@@ -13,6 +13,14 @@ public class DeptService {
 	
 	@Autowired
 	DeptDao dao;
+	
+	public List<Dept> depts(){
+		return dao.depts();
+	}
+	
+	public int deleteDept(int deptno) {
+		return dao.deleteDept(deptno);
+	}
 	  
 	public int updateDept(Dept dept) {
 		return dao.updateDept(dept);

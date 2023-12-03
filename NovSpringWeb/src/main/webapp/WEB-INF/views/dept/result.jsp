@@ -15,6 +15,7 @@
  	<c:forEach items="${dlist}" var="dept">
  		<div>${dept.deptno}. ${dept.dname } - ${dept.loc } 
  		<button onclick="location.href='/dept/update/${dept.deptno}'">수정</button>
+ 		<button onclick="location.href='/dept/delete/${dept.deptno}'">삭제</button>
  		</div>
  	</c:forEach>
  </c:if>
